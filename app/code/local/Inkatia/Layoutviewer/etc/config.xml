@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<config>	
+
+	<modules>
+		<Inkatia_Layoutviewer>
+			<version>0.1.0</version>
+		</Inkatia_Layoutviewer>
+	</modules>
+	
+	<frontend>
+		<routers>
+		   <layoutviewer>
+			   <use>standard</use>
+			   <args>
+				   <module>Inkatia_Layoutviewer</module>
+				   <frontName>layoutviewer</frontName>
+			   </args>
+		   </layoutviewer>
+		</routers>
+		<layout>
+			  <updates>
+				  <layoutviewer module="Inkatia_Layoutviewer">
+					  <!-- Updates the Module Layout at default/layout/inkatia_layoutviewer.xml -->
+					  <file>inkatia_layoutviewer.xml</file>
+				  </layoutviewer>
+			  </updates>
+		</layout>
+	</frontend>
+	
+	<global>
+		<models>
+			<layoutviewer>
+				<class>Inkatia_Layoutviewer_Model</class>
+			</layoutviewer>
+			<core>
+				<rewrite>
+					<layout_update>Inkatia_Layoutviewer_Model_Layout_Update</layout_update>
+				</rewrite>
+			</core>
+		</models>
+		<events>
+			<controller_action_postdispatch>
+				<observers>
+					<layoutviewer>
+						<type>singleton</type>						
+						<class>Inkatia_Layoutviewer_Model_Observer</class>
+						<method>checkForLayoutDisplayRequest</method>
+					</layoutviewer>
+				</observers>
+			</controller_action_postdispatch>
+		</events>
+	</global>
+		
+</config>
