@@ -15,7 +15,7 @@
 		}
 		
 		//entry point
-		public function checkForLayoutDisplayRequest($observer) {			
+		public function checkForLayoutDisplayRequest($observer) {		
 			$this->init();
 			$is_set = array_key_exists(self::FLAG_SHOW_LAYOUT, $_GET);
 			if(		$is_set && 'package' == $_GET[self::FLAG_SHOW_LAYOUT]) {
